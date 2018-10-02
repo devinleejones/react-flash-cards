@@ -35,6 +35,7 @@ export default class Card extends Component {
               <label htmlFor="exampleAnswer">Answer</label>
               <input name="answer" type="answer" className="form-control" />
             </div>
+            <button type="save">Save</button>
           </form>
         </span>
       </div>
