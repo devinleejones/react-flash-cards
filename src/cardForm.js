@@ -12,6 +12,10 @@ const styles = {
     position: 'absolute',
     transform: 'translateY(-2rem) translateX(1.5rem)',
     backgroundColor: 'white'
+  },
+  input: {
+    border: 'solid black',
+    fontWeight: 'bold'
   }
 }
 
@@ -24,6 +28,7 @@ export default function CardForm(props) {
           <div className="form-group m-4 pt-4">
             <label htmlFor="exampleQuestion">Question</label>
             <input
+              style={styles.input}
               name="question"
               type="text"
               id="exampleQuestion"
@@ -34,6 +39,7 @@ export default function CardForm(props) {
           <div className="form-group m-4">
             <label htmlFor="exampleAnswer">Answer</label>
             <input
+              style={styles.input}
               name="answer"
               type="text"
               id="exampleAnswer"
