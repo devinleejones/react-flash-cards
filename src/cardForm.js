@@ -26,7 +26,7 @@ export default function CardForm(props) {
             <input
               name="question"
               type="question"
-              value={props.value}
+              id="exampleQuestion"
               className="form-control"
               placeholder="Input a Question"
             />
@@ -36,7 +36,7 @@ export default function CardForm(props) {
             <input
               name="answer"
               type="answer"
-              value={props.value}
+              id="exampleAnswer"
               className="form-control"
               placeholder="Input an Answer"
             />
