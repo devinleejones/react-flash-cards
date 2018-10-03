@@ -18,14 +18,14 @@ const styles = {
 export default function CardForm(props) {
   return (
     <div className="container-fluid d-flex justify-content-center">
-      <span style={styles.border}>
+      <div style={styles.border}>
         <h1 style={styles.title}>Create a Flash Card</h1>
         <form onSubmit={props.handleSubmit}>
           <div className="form-group m-4 pt-4">
             <label htmlFor="exampleQuestion">Question</label>
             <input
               name="question"
-              type="question"
+              type="text"
               id="exampleQuestion"
               className="form-control"
               placeholder="Input a Question"
@@ -35,15 +35,15 @@ export default function CardForm(props) {
             <label htmlFor="exampleAnswer">Answer</label>
             <input
               name="answer"
-              type="answer"
+              type="text"
               id="exampleAnswer"
               className="form-control"
               placeholder="Input an Answer"
             />
           </div>
-          <button type="save">Save</button>
+          <button type="submit">Save</button>
         </form>
-      </span>
+      </div>
     </div>
   )
 }
