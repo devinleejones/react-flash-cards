@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import CardForm from './cardForm'
-import CardList from './cardList'
 
 export default class App extends Component {
   constructor(props) {
