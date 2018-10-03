@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import CardForm from './cardForm'
+import CardList from './cardList'
 
 export default class App extends Component {
   constructor(props) {
@@ -28,9 +29,11 @@ export default class App extends Component {
 
   render() {
     const { handleSubmit } = this
+    const { cards } = this.state
     return (
       <div>
         <CardForm handleSubmit={handleSubmit} />
+        <CardList cards={cards} />
       </div>
     )
   }
