@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import CardForm from './cardForm'
 import CardList from './cardList'
+import NavBar from './navBar'
 
 export default class App extends Component {
   constructor(props) {
@@ -31,10 +32,11 @@ export default class App extends Component {
     const { handleSubmit } = this
     const { cards } = this.state
     return (
-      <div>
+      <Fragment>
+        <NavBar />
         <CardForm handleSubmit={handleSubmit} />
         <CardList cards={cards} />
-      </div>
+      </Fragment>
     )
   }
 }
