@@ -8,10 +8,12 @@ import hash from './hash'
 export default class App extends Component {
   constructor(props) {
     super(props)
+    const stateJson = localStorage.getItem('view-app-state')
+    const appState = JSON.parse(stateJson) || {}
     const { path } = hash.parse(location.hash)
     this.state = {
       view: { path },
-      cards: []
+      cards: appState.cards || []
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -54,6 +56,11 @@ export default class App extends Component {
       this.setState({
         view: { path }
       })
+    })
+    window.addEventListener('beforeunload', () => {
+      const { cards } = this.state
+      const stateJson = JSON.stringify({ cards })
+      localStorage.setItem('view-app-state', stateJson)
     })
   }
 
