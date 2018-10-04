@@ -12,7 +12,7 @@ export default class App extends Component {
     const appState = JSON.parse(stateJson) || {}
     const { path } = hash.parse(location.hash)
     this.state = {
-      view: appState.view || { path },
+      view: { path },
       cards: appState.cards || []
     }
     this.handleSubmit = this.handleSubmit.bind(this)
