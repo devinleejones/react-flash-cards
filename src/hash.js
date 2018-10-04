@@ -1,15 +1,9 @@
-import queryString from './query-string'
-
 const hash = {
   parse(string) {
-    const [path, query] = string.split('?')
+    const [path] = string.split('?')
     return {
-      path: path.slice(1) || '',
-      params: queryString.parse(query)
+      path: path.slice(1) || ''
     }
-  },
-  stringify({ path, params }) {
-    return '#' + path + queryString.stringify(params)
   }
 }
 

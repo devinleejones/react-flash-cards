@@ -36,12 +36,12 @@ export default class App extends Component {
     switch (path) {
       case 'cards':
         const { cards } = this.state
-        return (
-          <div>
-            <CardList cards={cards} />
-            <Cards />
-          </div>
-        )
+        if (cards.length > 0) {
+          return <CardList cards={cards} />
+        }
+        else {
+          return <Cards />
+        }
       case 'new':
         const { handleSubmit } = this
         return <CardForm handleSubmit={handleSubmit} />
