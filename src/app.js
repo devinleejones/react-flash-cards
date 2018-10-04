@@ -8,11 +8,12 @@ import hash from './hash'
 export default class App extends Component {
   constructor(props) {
     super(props)
-    localStorage.getItem('view-app-state')
+    const stateJson = localStorage.getItem('view-app-state')
+    const appState = JSON.parse(stateJson) || {}
     const { path } = hash.parse(location.hash)
     this.state = {
-      view: { path },
-      cards: []
+      view: appState.view || { path },
+      cards: appState.cards || []
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
