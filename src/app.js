@@ -55,6 +55,11 @@ export default class App extends Component {
         view: { path }
       })
     })
+    window.addEventListener('beforeunload', () => {
+      const { cards } = this.state
+      const stateJson = JSON.stringify({ cards })
+      localStorage.setItem(stateJson)
+    })
   }
 
   render() {
