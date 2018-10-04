@@ -12,6 +12,18 @@ const styles = {
     position: 'absolute',
     transform: 'translateY(-2rem) translateX(1.5rem)',
     backgroundColor: 'white'
+  },
+  input: {
+    border: 'solid black',
+    fontWeight: 'bold',
+    height: '3rem'
+  },
+  button: {
+    border: '2px solid black',
+    transform: 'translateY(0.5rem) translateX(17rem)',
+    boxShadow: '2px 2px 2px rgb(0, 0, 0)',
+    cursor: 'pointer',
+    fontWeight: 'bold'
   }
 }
 
@@ -24,6 +36,7 @@ export default function CardForm(props) {
           <div className="form-group m-4 pt-4">
             <label htmlFor="exampleQuestion">Question</label>
             <input
+              style={styles.input}
               name="question"
               type="text"
               id="exampleQuestion"
@@ -34,6 +47,7 @@ export default function CardForm(props) {
           <div className="form-group m-4">
             <label htmlFor="exampleAnswer">Answer</label>
             <input
+              style={styles.input}
               name="answer"
               type="text"
               id="exampleAnswer"
@@ -41,7 +55,9 @@ export default function CardForm(props) {
               placeholder="Input an Answer"
             />
           </div>
-          <button type="submit">Save</button>
+          <button type="submit" style={styles.button}>
+            Save
+          </button>
         </form>
       </div>
     </div>
