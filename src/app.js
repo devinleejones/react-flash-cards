@@ -31,6 +31,23 @@ export default class App extends Component {
     event.target.reset()
   }
 
+  renderView() {
+    const { path } = this.state.view
+    switch (path) {
+      case 'cards':
+        const { cards } = this.state
+        return (
+          <div>
+            <CardList cards={cards} />
+            <Cards />
+          </div>
+        )
+      case 'new':
+        const { handleSubmit } = this
+        return <CardForm handleSubmit={handleSubmit} />
+    }
+  }
+
   componentDidMount() {
     window.addEventListener('hashchange', () => {
       const { path } = hash.parse(location.hash)
@@ -41,14 +58,10 @@ export default class App extends Component {
   }
 
   render() {
-    const { handleSubmit } = this
-    const { cards } = this.state
     return (
       <Fragment>
         <NavBar />
-        <CardForm handleSubmit={handleSubmit} />
-        <CardList cards={cards} />
-        <Cards />
+        {this.renderView()}
       </Fragment>
     )
   }
