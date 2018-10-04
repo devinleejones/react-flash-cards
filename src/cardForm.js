@@ -15,6 +15,14 @@ const styles = {
   },
   input: {
     border: 'solid black',
+    fontWeight: 'bold',
+    height: '3rem'
+  },
+  button: {
+    border: '2px solid black',
+    transform: 'translateY(0.5rem) translateX(17rem)',
+    boxShadow: '2px 2px 2px rgb(0, 0, 0)',
+    cursor: 'pointer',
     fontWeight: 'bold'
   }
 }
@@ -47,7 +55,9 @@ export default function CardForm(props) {
               placeholder="Input an Answer"
             />
           </div>
-          <button type="submit">Save</button>
+          <button type="submit" style={styles.button}>
+            Save
+          </button>
         </form>
       </div>
     </div>
