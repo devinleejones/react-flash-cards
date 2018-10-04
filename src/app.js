@@ -31,6 +31,15 @@ export default class App extends Component {
     event.target.reset()
   }
 
+  componentDidMount() {
+    window.addEventListener('hashchange', () => {
+      const { path } = hash.parse(location.hash)
+      this.setState({
+        view: { path }
+      })
+    })
+  }
+
   render() {
     const { handleSubmit } = this
     const { cards } = this.state
