@@ -8,6 +8,7 @@ import hash from './hash'
 export default class App extends Component {
   constructor(props) {
     super(props)
+    localStorage.getItem('view-app-state')
     const { path } = hash.parse(location.hash)
     this.state = {
       view: { path },
@@ -58,7 +59,7 @@ export default class App extends Component {
     window.addEventListener('beforeunload', () => {
       const { cards } = this.state
       const stateJson = JSON.stringify({ cards })
-      localStorage.setItem(stateJson)
+      localStorage.setItem('view-app-state', stateJson)
     })
   }
 
