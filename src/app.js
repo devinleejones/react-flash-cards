@@ -3,12 +3,14 @@ import CardForm from './cardForm'
 import CardList from './cardList'
 import NavBar from './navBar'
 import Cards from './cards'
+import hash from './hash'
 
 export default class App extends Component {
   constructor(props) {
     super(props)
+    const { path } = hash.parse(location.hash)
     this.state = {
-      view: {},
+      view: { path },
       cards: []
     }
     this.handleSubmit = this.handleSubmit.bind(this)
