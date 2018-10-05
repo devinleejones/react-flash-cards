@@ -4,6 +4,8 @@ import CardList from './cardList'
 import NavBar from './navBar'
 import Cards from './cards'
 import hash from './hash'
+import Edit from './edit'
+import uuidv1 from 'uuid/v1'
 
 export default class App extends Component {
   constructor(props) {
@@ -25,7 +27,8 @@ export default class App extends Component {
       cards: [
         {
           question: form.get('question'),
-          answer: form.get('answer')
+          answer: form.get('answer'),
+          id: uuidv1().slice(0, 5)
         },
         ...this.state.cards
       ]
@@ -69,6 +72,7 @@ export default class App extends Component {
       <Fragment>
         <NavBar />
         {this.renderView()}
+        <Edit />
       </Fragment>
     )
   }
