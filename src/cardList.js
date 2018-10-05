@@ -33,7 +33,11 @@ export default function CardList(props) {
               <a style={style.a} href={`#edit?cardId=${card.id}`}>
                 <i className="far fa-edit" style={style.edit} />
               </a>
-              <i className="far fa-trash-alt" style={style.delete} />
+              <i
+                className="far fa-trash-alt"
+                style={style.delete}
+                onClick={props.deleteCard}
+              />
             </li>
           )
         })}
