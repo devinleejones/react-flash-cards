@@ -18,6 +18,7 @@ export default class App extends Component {
       cards: appState.cards || []
     }
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.updateCard = this.updateCard.bind(this)
   }
 
   handleSubmit(event) {
@@ -34,6 +35,33 @@ export default class App extends Component {
       ]
     })
     event.target.reset()
+  }
+
+  updateCard(event) {
+    event.preventDefault()
+    const form = new FormData(event.target)
+    const question = form.get('question')
+    const answer = form.get('answer')
+    const id = form.get('id')
+    const newCard = {}
+    const cards = this.state.cards.slice()
+    newCard.question = question
+    newCard.answer = answer
+    newCard.id = id
+    function compareIds(card) {
+      if (card.id === newCard.id) {
+        return true
+      }
+      else {
+        return false
+      }
+    }
+    const cardIndex = cards.findIndex(compareIds)
+    cards[cardIndex] = newCard
+    this.setState({
+      cards: cards
+    })
+    location.hash = 'cards'
   }
 
   renderView() {
