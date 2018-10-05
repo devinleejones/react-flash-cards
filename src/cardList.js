@@ -10,7 +10,10 @@ const style = {
     fontSize: '36px'
   },
   edit: {
-    transform: 'translateX(11rem)'
+    transform: 'translateX(9.5rem)'
+  },
+  delete: {
+    transform: 'translateX(10rem)'
   },
   a: {
     color: 'black'
@@ -30,6 +33,7 @@ export default function CardList(props) {
               <a style={style.a} href={`#edit?cardId=${card.id}`}>
                 <i className="far fa-edit" style={style.edit} />
               </a>
+              <i className="far fa-trash-alt" style={style.delete} />
             </li>
           )
         })}
