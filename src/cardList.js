@@ -11,6 +11,9 @@ const style = {
   },
   edit: {
     transform: 'translateX(11rem)'
+  },
+  a: {
+    color: 'black'
   }
 }
 
@@ -24,8 +27,8 @@ export default function CardList(props) {
             <li key={index} className="list-group-item m-4" style={style.menu}>
               <p style={style.p}>{card.question}</p>
               <p style={style.p}>{card.answer}</p>
-              <a href={`#edit?cardId=${card.id}`}>
-                <i id={card.id} className="far fa-edit" style={style.edit} />
+              <a style={style.a} href={`#edit?cardId=${card.id}`}>
+                <i className="far fa-edit" style={style.edit} />
               </a>
             </li>
           )
