@@ -12,9 +12,9 @@ export default class App extends Component {
     super(props)
     const stateJson = localStorage.getItem('view-app-state')
     const appState = JSON.parse(stateJson) || {}
-    const { path } = hash.parse(location.hash)
+    const { path, params } = hash.parse(location.hash)
     this.state = {
-      view: { path },
+      view: { path, params },
       cards: appState.cards || []
     }
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -37,10 +37,10 @@ export default class App extends Component {
   }
 
   renderView() {
-    const { path } = this.state.view
+    const { path, params } = this.state.view
+    const { cards } = this.state
     switch (path) {
       case 'cards':
-        const { cards } = this.state
         if (cards.length > 0) {
           return <CardList cards={cards} />
         }
@@ -50,14 +50,19 @@ export default class App extends Component {
       case 'new':
         const { handleSubmit } = this
         return <CardForm handleSubmit={handleSubmit} />
+      case 'edit':
+        const { updateCard } = this
+        const filteredCards = cards.filter(card => card.id === params.cardId)
+        const card = filteredCards[0]
+        return <Edit card={card} updateCard={updateCard} />
     }
   }
 
   componentDidMount() {
     window.addEventListener('hashchange', () => {
-      const { path } = hash.parse(location.hash)
+      const { path, params } = hash.parse(location.hash)
       this.setState({
-        view: { path }
+        view: { path, params }
       })
     })
     window.addEventListener('beforeunload', () => {
@@ -72,7 +77,6 @@ export default class App extends Component {
       <Fragment>
         <NavBar />
         {this.renderView()}
-        <Edit />
       </Fragment>
     )
   }
