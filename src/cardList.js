@@ -26,6 +26,7 @@ export default function CardList(props) {
       <h1 className="m-4">Card List</h1>
       <ul>
         {props.cards.map((card, index) => {
+          const id = card.id
           return (
             <li key={index} className="list-group-item m-4" style={style.menu}>
               <p style={style.p}>{card.question}</p>
@@ -36,7 +37,7 @@ export default function CardList(props) {
               <i
                 className="far fa-trash-alt"
                 style={style.delete}
-                onClick={props.deleteCard}
+                onClick={() => props.deleteCard(id)}
               />
             </li>
           )
