@@ -36,6 +36,7 @@ export default class App extends Component {
       ]
     })
     event.target.reset()
+    location.hash = 'cards'
   }
 
   deleteCard(id) {
