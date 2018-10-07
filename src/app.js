@@ -19,6 +19,7 @@ export default class App extends Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.updateCard = this.updateCard.bind(this)
+    this.deleteCard = this.deleteCard.bind(this)
   }
 
   handleSubmit(event) {
@@ -35,6 +36,15 @@ export default class App extends Component {
       ]
     })
     event.target.reset()
+    location.hash = 'cards'
+  }
+
+  deleteCard(id) {
+    const { cards } = this.state
+    const removedCard = cards.filter(card => card.id !== id)
+    this.setState({ cards: removedCard })
+    console.log(removedCard)
+    location.hash = 'cards'
   }
 
   updateCard(event) {
@@ -69,8 +79,9 @@ export default class App extends Component {
     const { cards } = this.state
     switch (path) {
       case 'cards':
+        const { deleteCard } = this
         if (cards.length > 0) {
-          return <CardList cards={cards} />
+          return <CardList cards={cards} deleteCard={deleteCard} />
         }
         else {
           return <Cards />

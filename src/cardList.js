@@ -10,7 +10,10 @@ const style = {
     fontSize: '36px'
   },
   edit: {
-    transform: 'translateX(11rem)'
+    transform: 'translateX(9.5rem)'
+  },
+  delete: {
+    transform: 'translateX(10rem)'
   },
   a: {
     color: 'black'
@@ -23,6 +26,7 @@ export default function CardList(props) {
       <h1 className="m-4">Card List</h1>
       <ul>
         {props.cards.map((card, index) => {
+          const id = card.id
           return (
             <li key={index} className="list-group-item m-4" style={style.menu}>
               <p style={style.p}>{card.question}</p>
@@ -30,6 +34,11 @@ export default function CardList(props) {
               <a style={style.a} href={`#edit?cardId=${card.id}`}>
                 <i className="far fa-edit" style={style.edit} />
               </a>
+              <i
+                className="far fa-trash-alt"
+                style={style.delete}
+                onClick={() => props.deleteCard(id)}
+              />
             </li>
           )
         })}
