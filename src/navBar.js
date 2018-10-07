@@ -12,7 +12,7 @@ export default function Navbar() {
     <nav className="navbar navbar-dark bg-dark navbar-expand">
       <div className="collapse navbar-collapse">
         <div className="navbar-nav" style={styles.nav}>
-          <a className="nav-item nav-link active" href="#cards">
+          <a className="nav-item nav-link" href="#cards">
             Cards <span className="sr-only">(current)</span>
           </a>
           <a className="nav-item nav-link ml-2" href="#new">
