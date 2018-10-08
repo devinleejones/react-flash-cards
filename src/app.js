@@ -97,7 +97,7 @@ export default class App extends Component {
         return <Edit card={card} updateCard={updateCard} />
       case 'practice':
         if (cards.length > 0) {
-          return <Practice cards={cards} deleteCard={deleteCard} />
+          return <Practice cards={cards} />
         }
         else {
           return <Cards />

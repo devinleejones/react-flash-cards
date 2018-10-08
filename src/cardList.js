@@ -13,7 +13,8 @@ const style = {
     transform: 'translateX(9.5rem)'
   },
   delete: {
-    transform: 'translateX(10rem)'
+    transform: 'translateX(10rem)',
+    cursor: 'pointer'
   },
   a: {
     color: 'black'

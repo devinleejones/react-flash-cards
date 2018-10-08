@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { Component } from 'react'
+import hash from './hash'
 
 const styles = {
   border: {
@@ -15,40 +16,51 @@ const styles = {
     fontWeight: 'bold',
     fontSize: '36px'
   },
-  edit: {
-    transform: 'translateX(9.5rem)'
-  },
-  delete: {
-    transform: 'translateX(10rem)'
-  },
   a: {
     color: 'black'
+  },
+  button: {
+    cursor: 'pointer'
   }
 }
 
-export default function Practice(props) {
-  return (
-    <div className="container-fluid d-flex justify-content-center">
-      <ul>
-        {props.cards.map((card, index) => {
-          const id = card.id
+export default class Practice extends Component {
+  constructor(props) {
+    super(props)
+    const stateJson = localStorage.getItem('view-app-state')
+    const appState = JSON.parse(stateJson) || {}
+    const { path, params } = hash.parse(location.hash)
+    this.state = {
+      view: { path, params },
+      cards: appState.cards || []
+    }
+  }
 
-          return (
-            <li key={index} className="list-group-item m-4" style={styles.menu}>
-              <p style={styles.p}>{card.question}</p>
-              <p style={styles.p}>{card.answer}</p>
-              <a style={styles.a} href={`#edit?cardId=${card.id}`}>
-                <i className="far fa-edit" style={styles.edit} />
-              </a>
-              <i
-                className="far fa-trash-alt"
-                style={styles.delete}
-                onClick={() => props.deleteCard(id)}
-              />
-            </li>
-          )
-        })}
-      </ul>
-    </div>
-  )
+  render() {
+    const { cards } = this.state
+    return (
+      <div className="container-fluid d-flex justify-content-center">
+        <ul>
+          {cards.map((card, index) => {
+            return (
+              <li
+                key={index}
+                className="list-group-item m-4"
+                style={styles.menu}>
+                <p style={styles.p}>{card.question}</p>
+                <a>
+                  <i
+                    style={styles.button}
+                    className="fas fa-chevron-circle-down mr-1"
+                    onClick={() => card.answer}
+                  />
+                  Show Answer
+                </a>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+    )
+  }
 }
