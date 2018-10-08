@@ -6,6 +6,7 @@ import Cards from './cards'
 import hash from './hash'
 import Edit from './edit'
 import uuidv1 from 'uuid/v1'
+import Practice from './practice'
 
 export default class App extends Component {
   constructor(props) {
@@ -94,6 +95,8 @@ export default class App extends Component {
         const filteredCards = cards.filter(card => card.id === params.cardId)
         const card = filteredCards[0]
         return <Edit card={card} updateCard={updateCard} />
+      case 'practice':
+        return <Practice cards={cards} />
     }
   }
 
