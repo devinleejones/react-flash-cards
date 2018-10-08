@@ -96,7 +96,12 @@ export default class App extends Component {
         const card = filteredCards[0]
         return <Edit card={card} updateCard={updateCard} />
       case 'practice':
-        return <Practice cards={cards} deleteCard={deleteCard} />
+        if (cards.length > 0) {
+          return <Practice cards={cards} deleteCard={deleteCard} />
+        }
+        else {
+          return <Cards />
+        }
     }
   }
 
