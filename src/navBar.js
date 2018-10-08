@@ -18,6 +18,9 @@ export default function Navbar() {
           <a className="nav-item nav-link ml-2" href="#new">
             New
           </a>
+          <a className="nav-item nav-link ml-2" href="#practice">
+            Practice
+          </a>
         </div>
       </div>
     </nav>
