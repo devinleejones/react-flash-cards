@@ -78,9 +78,9 @@ export default class App extends Component {
   renderView() {
     const { path, params } = this.state.view
     const { cards } = this.state
+    const { deleteCard } = this
     switch (path) {
       case 'cards':
-        const { deleteCard } = this
         if (cards.length > 0) {
           return <CardList cards={cards} deleteCard={deleteCard} />
         }
@@ -96,7 +96,7 @@ export default class App extends Component {
         const card = filteredCards[0]
         return <Edit card={card} updateCard={updateCard} />
       case 'practice':
-        return <Practice cards={cards} />
+        return <Practice cards={cards} deleteCard={deleteCard} />
     }
   }
 
