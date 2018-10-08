@@ -21,14 +21,14 @@ const styles = {
   },
   title: {
     fontWeight: 'bold',
-    fontSize: '28px'
+    fontSize: '36px'
   },
   previous: {
     transform: 'translateY(4.5rem) translateX(-2rem)',
     cursor: 'pointer'
   },
   next: {
-    transform: 'translateY(-4rem) translateX(31rem)',
+    transform: 'translateY(4.5rem) translateX(29.5rem)',
     position: 'd-inline',
     cursor: 'pointer'
   }
@@ -95,6 +95,12 @@ export default class Practice extends Component {
           id="previous"
           className="fas fa-less-than fa-lg"
         />
+        <i
+          style={styles.next}
+          onClick={this.changeFlashCard}
+          id="next"
+          className="fas fa-greater-than fa-lg"
+        />
         <div className="card-body" style={styles.menu}>
           <h3 style={styles.title}>{cards[currentCard].question}</h3>
           <a>
@@ -109,14 +115,6 @@ export default class Practice extends Component {
             {cards[currentCard].answer}
           </p>
         </div>
-        <span>
-          <i
-            style={styles.next}
-            onClick={this.changeFlashCard}
-            id="next"
-            className="fas fa-greater-than fa-lg"
-          />
-        </span>
       </div>
     )
   }
