@@ -1,65 +1,65 @@
 import React, { Component } from 'react'
-import hash from './hash'
 
 const styles = {
-  border: {
-    border: 'solid black',
-    width: '40rem',
-    height: '25rem',
-    margin: '10rem'
+  container: {
+    margin: '0 auto',
+    width: '500px',
+    marginTop: '10rem'
   },
   menu: {
     border: '2px solid black',
-    width: '15rem'
+    width: '30rem'
   },
   p: {
     fontWeight: 'bold',
-    fontSize: '36px'
+    fontSize: '16px'
   },
   a: {
-    color: 'black'
+    color: 'black',
+    cursor: 'pointer',
+    fontWeight: 'bold'
   },
-  button: {
-    cursor: 'pointer'
+  title: {
+    fontWeight: 'bold',
+    fontSize: '42px'
   }
 }
 
 export default class Practice extends Component {
   constructor(props) {
     super(props)
-    const stateJson = localStorage.getItem('view-app-state')
-    const appState = JSON.parse(stateJson) || {}
-    const { path, params } = hash.parse(location.hash)
     this.state = {
-      view: { path, params },
-      cards: appState.cards || []
+      currentCard: 0,
+      showAnswer: false
     }
+    this.showAnswer = this.showAnswer.bind(this)
+  }
+
+  showAnswer() {
+    this.setState({ showAnswer: !this.state.showAnswer })
   }
 
   render() {
-    const { cards } = this.state
+    const { showAnswer } = this.state
+    const { cards } = this.props
+    const answer = showAnswer ? '' : 'd-none'
+    const answerButton = showAnswer ? 'Hide Answer' : 'Show Answer'
     return (
-      <div className="container-fluid d-flex justify-content-center">
-        <ul>
-          {cards.map((card, index) => {
-            return (
-              <li
-                key={index}
-                className="list-group-item m-4"
-                style={styles.menu}>
-                <p style={styles.p}>{card.question}</p>
-                <a>
-                  <i
-                    style={styles.button}
-                    className="fas fa-chevron-circle-down mr-1"
-                    onClick={() => card.answer}
-                  />
-                  Show Answer
-                </a>
-              </li>
-            )
-          })}
-        </ul>
+      <div style={styles.container}>
+        <div className="card-body" style={styles.menu}>
+          <h3 style={styles.title}>{cards[0].question}</h3>
+          <a>
+            <i
+              onClick={this.showAnswer}
+              className="fas fa-chevron-circle-down"
+              style={styles.a}
+            />
+            {answerButton}
+          </a>
+          <p style={styles.p} className={`mt-2 ml-1 ${answer}`}>
+            {cards[0].answer}
+          </p>
+        </div>
       </div>
     )
   }
