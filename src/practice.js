@@ -108,7 +108,6 @@ export default class Practice extends Component {
           <div
             className="progress-bar progress-bar-striped progress-bar-animated bg-dark"
             role="progressbar"
-            aria-valuenow="0"
             aria-valuemin="0"
             aria-valuemax="100"
             style={{ width: progress + '%' }}
