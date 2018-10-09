@@ -34,7 +34,7 @@ const styles = {
   next: {
     position: 'absolute',
     top: '3.25rem',
-    left: '31.75rem',
+    right: '-2rem',
     margin: '0',
     cursor: 'pointer'
   }
@@ -101,12 +101,6 @@ export default class Practice extends Component {
           id="previous"
           className="fas fa-less-than fa-lg"
         />
-        <i
-          style={styles.next}
-          onClick={this.changeFlashCard}
-          id="next"
-          className="fas fa-greater-than fa-lg"
-        />
         <div className="card-body" style={styles.menu}>
           <h3 style={styles.title}>{cards[currentCard].question}</h3>
           <a>
@@ -121,6 +115,12 @@ export default class Practice extends Component {
             {cards[currentCard].answer}
           </p>
         </div>
+        <i
+          style={styles.next}
+          onClick={this.changeFlashCard}
+          id="next"
+          className="fas fa-greater-than fa-lg"
+        />
       </div>
     )
   }
