@@ -95,6 +95,16 @@ export default class Practice extends Component {
     const answerButton = showAnswer ? 'Hide Answer' : 'Show Answer'
     return (
       <div style={styles.container}>
+        <div className="progress mb-4">
+          <div
+            className="progress-bar progress-bar-striped progress-bar-animated bg-dark"
+            role="progressbar"
+            aria-valuenow="0"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            style={{ width: '25%' }}
+          />
+        </div>
         <i
           style={styles.previous}
           onClick={this.changeFlashCard}
