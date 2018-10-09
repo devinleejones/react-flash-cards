@@ -9,7 +9,7 @@ const styles = {
   },
   menu: {
     border: '2px solid black',
-    width: '30rem'
+    width: '31.25rem'
   },
   p: {
     fontWeight: 'bold',
@@ -34,7 +34,7 @@ const styles = {
   next: {
     position: 'absolute',
     top: '3.25rem',
-    right: '-2rem',
+    right: '-3rem',
     margin: '0',
     cursor: 'pointer'
   }
