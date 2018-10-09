@@ -13,17 +13,24 @@ const style = {
     transform: 'translateX(9.5rem)'
   },
   delete: {
-    transform: 'translateX(10rem)'
+    transform: 'translateX(10rem)',
+    cursor: 'pointer'
   },
   a: {
     color: 'black'
+  },
+  h1: {
+    fontSize: '42px',
+    fontWeight: 'bold'
   }
 }
 
 export default function CardList(props) {
   return (
     <div>
-      <h1 className="m-4">Card List</h1>
+      <h1 style={style.h1} className="m-4">
+        Card List
+      </h1>
       <ul>
         {props.cards.map((card, index) => {
           const id = card.id

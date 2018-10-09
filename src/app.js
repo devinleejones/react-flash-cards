@@ -6,6 +6,7 @@ import Cards from './cards'
 import hash from './hash'
 import Edit from './edit'
 import uuidv1 from 'uuid/v1'
+import Practice from './practice'
 
 export default class App extends Component {
   constructor(props) {
@@ -77,9 +78,9 @@ export default class App extends Component {
   renderView() {
     const { path, params } = this.state.view
     const { cards } = this.state
+    const { deleteCard } = this
     switch (path) {
       case 'cards':
-        const { deleteCard } = this
         if (cards.length > 0) {
           return <CardList cards={cards} deleteCard={deleteCard} />
         }
@@ -94,6 +95,13 @@ export default class App extends Component {
         const filteredCards = cards.filter(card => card.id === params.cardId)
         const card = filteredCards[0]
         return <Edit card={card} updateCard={updateCard} />
+      case 'practice':
+        if (cards.length > 0) {
+          return <Practice cards={cards} />
+        }
+        else {
+          return <Cards />
+        }
     }
   }
 
