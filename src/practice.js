@@ -4,7 +4,8 @@ const styles = {
   container: {
     margin: '0 auto',
     width: '500px',
-    marginTop: '10rem'
+    marginTop: '10rem',
+    position: 'relative'
   },
   menu: {
     border: '2px solid black',
@@ -24,12 +25,17 @@ const styles = {
     fontSize: '36px'
   },
   previous: {
-    transform: 'translateY(4.5rem) translateX(-2rem)',
+    position: 'absolute',
+    top: '3.25rem',
+    left: '-3rem',
+    margin: '0',
     cursor: 'pointer'
   },
   next: {
-    transform: 'translateY(4.5rem) translateX(29.5rem)',
-    position: 'd-inline',
+    position: 'absolute',
+    top: '3.25rem',
+    left: '31.75rem',
+    margin: '0',
     cursor: 'pointer'
   }
 }
