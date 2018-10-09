@@ -26,14 +26,14 @@ const styles = {
   },
   previous: {
     position: 'absolute',
-    top: '3.25rem',
+    top: '5.5rem',
     left: '-3rem',
     margin: '0',
     cursor: 'pointer'
   },
   next: {
     position: 'absolute',
-    top: '3.25rem',
+    top: '5.5rem',
     right: '-3rem',
     margin: '0',
     cursor: 'pointer'
@@ -49,6 +49,7 @@ export default class Practice extends Component {
     }
     this.showAnswer = this.showAnswer.bind(this)
     this.changeFlashCard = this.changeFlashCard.bind(this)
+    this.updateProgressBar = this.updateProgressBar.bind(this)
   }
 
   showAnswer() {
@@ -88,13 +89,30 @@ export default class Practice extends Component {
     }
   }
 
+  updateProgressBar() {
+    const { currentCard } = this.state
+    const { cards } = this.props
+    const progress = ((currentCard + 1) / cards.length) * 100
+    return progress
+  }
+
   render() {
     const { currentCard, showAnswer } = this.state
     const { cards } = this.props
+    const progress = this.updateProgressBar()
     const answer = showAnswer ? '' : 'd-none'
     const answerButton = showAnswer ? 'Hide Answer' : 'Show Answer'
     return (
       <div style={styles.container}>
+        <div className="progress mb-4">
+          <div
+            className="progress-bar progress-bar-striped progress-bar-animated bg-dark"
+            role="progressbar"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            style={{ width: progress + '%' }}
+          />
+        </div>
         <i
           style={styles.previous}
           onClick={this.changeFlashCard}
