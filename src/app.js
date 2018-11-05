@@ -80,6 +80,8 @@ export default class App extends Component {
     const { cards } = this.state
     const { deleteCard } = this
     switch (path) {
+      default:
+        return <Cards/>
       case 'cards':
         if (cards.length > 0) {
           return <CardList cards={cards} deleteCard={deleteCard} />
