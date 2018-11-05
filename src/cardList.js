@@ -3,17 +3,19 @@ import React from 'react'
 const style = {
   menu: {
     border: '2px solid black',
-    width: '15rem'
+    width: '40rem'
   },
   p: {
     fontWeight: 'bold',
     fontSize: '36px'
   },
+  p2: {
+    fontSize: '36px'
+  },
   edit: {
-    transform: 'translateX(9.5rem)'
+    cursor: 'pointer'
   },
   delete: {
-    transform: 'translateX(10rem)',
     cursor: 'pointer'
   },
   a: {
@@ -22,6 +24,11 @@ const style = {
   h1: {
     fontSize: '42px',
     fontWeight: 'bold'
+  },
+  hr: {
+    border: 'solid 2px',
+    backgroundColor: 'black',
+    height: '2px'
   }
 }
 
@@ -37,7 +44,8 @@ export default function CardList(props) {
           return (
             <li key={index} className="list-group-item m-4" style={style.menu}>
               <p style={style.p}>{card.question}</p>
-              <p style={style.p}>{card.answer}</p>
+              <hr style={style.hr} />
+              <p style={style.p2}>{card.answer}</p>
               <a style={style.a} href={`#edit?cardId=${card.id}`}>
                 <i className="far fa-edit" style={style.edit} />
               </a>
