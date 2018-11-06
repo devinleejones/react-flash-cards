@@ -1,5 +1,6 @@
 # react-flash-cards
-A flash card app for self-learners
+
+### A React.js flash card application for people who learn by self-quizzing
 
 #### [LiveDemo](https://devinleejones.github.io/react-flash-cards/)
 
